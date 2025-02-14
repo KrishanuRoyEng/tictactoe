@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel = 'stylesheet' href="tictactoe.css">
+</head>
+<body>  
+        <h1>Tic-Tac-Toe</h1>
+        <div class="difficulty-container">
+            <span>Difficulty:</span>
+            <button id="easyBtn" class="difficulty-btn" onclick="setDifficulty('easy')">Easy</button>
+            <button id="hardBtn" class="difficulty-btn" onclick="setDifficulty('hard')">Hard</button>
+        </div>
+        <div class="choice-container">
+            <button class="choice-container-btn" onclick="setFirstPlayer('X')">Player First</button>
+            <button class="choice-container-btn" onclick="setFirstPlayer('O')">AI First</button>            
+        </div>
+        <div class="game-container">
+            <div class="scoreboard">
+                <div class="player">
+                    <img src="resources/user.png" alt="Player">
+                    <p id="player-score">0</p>
+                </div>
+                <div class="board" id="board"></div>
+                <div class="ai">
+                    <img src="resources/pc.png" alt="AI">
+                    <p id="ai-score">0</p>
+                </div>
+            </div>
+            <button onclick="resetGame()">Restart</button>  
+        </div>
+        <div id="gamePopup" class="popup">
+            <div class="popup-content">
+                <p id="popupMessage"></p>
+                <button onclick="closePopup()">OK</button>
+            </div>
+        </div>        
+    <script src="audio.js"></script>
+    <script src="tictactoe.js"></script>
+</body>
+</html>

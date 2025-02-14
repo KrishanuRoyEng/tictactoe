@@ -1,0 +1,245 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+@media (max-width: 768px) { /* Phones */
+    body {
+        background-image: url("resources/bg_mob.png");
+    }
+}
+
+@media (min-width: 769px) { /* Laptops & PCs */
+    body {
+        background-image: url("resources/bg_pc.png");
+    }
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.player, .ai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#player-score, #ai-score{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.player, #player-score {
+    position: static;
+    margin-left: -200px;
+}
+
+.ai, #ai-score {
+    position: static;
+    margin-right: -200px;
+}
+
+.player img{
+    width: 200px;
+    height: 200px;
+    margin-left: -200px;
+}
+
+.ai img {
+    width: 200px;
+    height: 200px;
+    margin-right: -200px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cell {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: background 0.3s ease-in-out;
+}
+
+.cell:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, #46b430, #1ea274);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #d1d142, #66c41e);
+    transform: scale(1.05);
+}
+
+.difficulty-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.difficulty-btn {
+    background: transparent;
+    border: 2px solid #00ffcc;
+    color: #00ffcc;
+    padding: 5px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.difficulty-btn:hover {
+    background: #00ffcc;
+    color: black;
+}
+
+.difficulty-btn.active {
+    background: #00ffcc;
+    color: black;
+    font-weight: bold;
+}
+
+.choice-container-btn {
+    background: transparent;
+    border: 2px solid cyan;
+    color: cyan;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.choice-container-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px cyan;
+    transform: scale(1.1);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#popupMessage {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.popup-content button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.popup-content button:hover {
+    background: #2980b9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.selected {
+    background-color: #FFD700;
+    color: black;
+    border: 2px solid #FFF;
+    font-weight: bold;
+}
